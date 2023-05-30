@@ -51,7 +51,7 @@ ibmmas/cliコンテナイメージ内で、playbookを実行してMASをイン�
 
     pull-secret及びlicense.datをコンテナ内の指定ディレクトリに配置します。
     ```bash
-    $ podman cp pull-secret sno:/opt/app-root/src/masconfig/pull-secret
+    $ podman cp pull-secret.txt sno:/opt/app-root/src/masconfig/pull-secret
     $ podman cp license.dat sno:/opt/app-root/src/masconfig/license.dat
     ```
 
@@ -237,9 +237,17 @@ OCPのURL、Username、Passwordのログイン情報はプロビジョニング�
 
 MASプロビジョニングコマンドを使用してOCPにMASをインストールします。
 「3. MASプロビジョニング」のログから取得したURL、Username、Passwordを使い予めOCコマンドでログインします。
-
 ```bash
 $ oc login -u <Username> -p <Password> --server=<Login Server>
+```
+
+「3. MASプロビジョニング」のログ上、OCログインで用いるURL、Username、Passwordは、次のそれぞれになります。
+```
+ "msg": [
+   "Login Server ........................... https://api.sno-sample.masqit-sno-aws-jp.com:6443",
+   "Login User ............................. kubeadmin",
+   "Login Password ......................... oBKpJ-M68Dj-yXBnQ-XXXXXX"
+]
 ```
 
 MASインストールコマンドを実行します。
@@ -253,19 +261,20 @@ MASをインストールする際、コンテナイメージのバージョン�
 
 | 設定値                           | 説明                                          | 設定値                                                                                                                                                                                                                                    |
 | -------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Set Target OpenShift Cluster     | 接続するクラスター名                          | [Y/n] : Y<br>コンテナイメージのバージョンにより問われる内容が肯定/否定質問で異なる為、回答の際Y/nの意味が異なります<br>異なるクラスターに接続する場合はそのURL                                                                                                                                                                                    |
-| Configure Installation           | インストール設定                              | MAS Instance ID(任意の値) : sno <br>MAS Workspace ID(任意の値) : sno<br>MAS Workspace Display Name(任意の値) : sno<br>Use online catalog [y/N] : y<br>yを選択すると最新のカタログが使用されます<br> MAS Version : 1(8.9) <br>※2023/03時点 |
+| Set Target OpenShift Cluster     | 接続するクラスター名                          | [y/N] : N<br>異なるクラスターに接続する場合はそのURL                                                                                                                                                                                      |
+| Configure Installation           | インストール設定                              | MAS Instance ID(任意の値) : sno <br>MAS Workspace ID(任意の値) : sno<br>MAS Workspace Display Name(任意の値) : sno<br>Use online catalog [y/N] : y<br>yを選択すると最新のカタログが使用されます<br> MAS Version: 1. 8.10 Select Subscription Channel > 1 |
 | License Terms                    | ライセンスの承認                              | [y/N] : y                                                                                                                                                                                                                                 |
 | Configure Operation Mode         | non-production modeでインストールするかどうか | [y/N] : N                                                                                                                                                                                                                                 |
 | Configure Custom Domain          | カスタムドメインの設定                        | [y/N] : N                                                                                                                                                                                                                                 |
-| Application Selection            | アプリケーションの選択やデモデータの選択      | Install Manage [y/N] : y<br>+ Create demo data [Y/n] : Y<br>+ Configure JMS [y/N] : N                                                                                                                                                     |
+| Application Selection            | アプリケーションの選択やデモデータの選択      | Install Manage [y/N] : y<br>+ Create demo data [Y/n] : Y<br>+ Configure JMS [y/N] : N　<br>+ Customize database settings [y/N] N                                                                                                                                                      |
 | Configure Db2                    | Db2に関する設定                               | Install Db2 using the IBM Db2 Universal Operator? [Y/n] : y<br>Customize CPU and memory request/limit? [y/N] : N<br>Customize storage capacity? [y/N] : N                                                                                 |
 | Additional Configuration         | その他の設定                                  | Use additional configurations? [y/N]  : N                                                                                                                                                                                                 |
 | Configure Storage Class Usage    | ストレージクラスの選択                        | Choose your own storage classes anyway [y/N] : y<br> yにするとストレージクラスを入力する必要がある<br>例：ReadWriteOnce (RWO) storage class > gp2                                                                                         |
 | Configure IBM Container Registry | IBM Entitlement Keyの指定                     | 「01_事前準備」で取得した値を入力                                                                                                                                                                                                         |
 | Configure Product License        | ライセンスファイルに関する情報を入力          | License ID : ライセンスファイル内1行目の12桁のID<br>License File : /opt/app-root/src/masconfig/license.dat                                                                                                                                |
 | Configure UDS                    | UDS関連の情報                                 | UDS Contact Email : snouser@ibm.com<br>UDS Contact First Name : sno<br>UDS Contact Last Name : sno                                                                                                                                        |
-
+| Prepare Installation             | PVCの設定完了を待つかの選択                      | Wait for PVCs to bind? [Y/n] n                                                                                                                                                                                                                  |
+| Advanced Settings                | 追加設定                                      | Configure Advanced Settings (optional)? [y/N] N                                                                                                                                                                                                |
 
 <details>
     <summary>全実行ログ</summary>
@@ -503,7 +512,8 @@ MASをインストールする際、コンテナイメージのバージョン�
 ![](4-1-1.jpeg)
   
 
-最終的に最後の項目の「suite-must・・・」にチェックマークがついていることを確認します。
+最終的に最後の項目の「suite-must・・・」にチェックマークがついていることを確認します。  
+(注)ブラウザの言語が「日本語」だと緑のチェックマークが想定通りに出ないので、「英語」に変更すること推奨
 ![](4-1-2.jpeg)
 
 

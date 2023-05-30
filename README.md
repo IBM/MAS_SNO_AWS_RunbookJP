@@ -9,7 +9,7 @@
 - [04_管理者ユーザーの作成](04_maxadmin/index.md)
 - [05_導入後環境の確認](05_confirm/index.md)
 ## はじめに
-本資料は、AWS環境にSingle Node Openshiftを構築し、IBM Maximo Application Suite(MAS) 8.9 / MAS Manage 8.5 を導入する手順書です。  
+本資料は、AWS環境にSingle Node Openshiftを構築し、IBM Maximo Application Suite(MAS) 8.10 / MAS Manage 8.6 を導入する手順書です。  
 AWS上に テストやPoC利用を目的とした 最小構成の MAS Manage 環境を構築することを想定しております。
 
 本手順は下記のURLを参考に導入しています。
@@ -31,7 +31,7 @@ MAS Manage のみ導入する場合も以下をご参照ください。
 
 
 ## 注意事項
-- 当手順は2023年3月に、Maximo Application Suite 8.9/Manage8.5の構築・アクティベーションをAWSのSingle Node Openshift環境にて実施した際の作業ログをベースに記述しております。
+- 当手順は2023年5月に、Maximo Application Suite 8.10/Manage8.6の構築・アクティベーションをAWSのSingle Node Openshift環境にて実施した際の作業ログをベースに記述しております。
 - 本資料の記載内容は、正式な IBM のテストやレビューを受けておりません。内容について、できる限り正確を期すよう努めておりますが、いかなる明示または暗黙の保証も責任も負いかねます。
 - 本資料の情報は、使用先の責任において使用されるべきものであることを、あらかじめご了承ください。
 - 掲載内容は不定期に変更されることもあります。他のメディア等に無断で転載する事はご遠慮ください。
@@ -62,13 +62,13 @@ MAS Manage のみ導入する場合も以下をご参照ください。
 | ----------------------------------- | ---------- |
 | Red Hat OpenShift                   | 4.10.52    |
 | Red Hat OpenShift CLI               | 4.10.52    |
-| IBM Maximo Application Suite        | 8.9.0      |
-| IBM Maximo Manage                   | 8.5.0      |
+| IBM Maximo Application Suite        | 8.10.0     |
+| IBM Maximo Manage                   | 8.6.1      |
 | IBM Cloud Pack foundational Service | 3.23.0     |
 | UDS                                 | 2.0.9      |
 | SLS                                 | 3.5.0      |
 
-## 参考.IBM Maximo Application Suite 8.9 前提ソフトウェア
+## 参考.IBM Maximo Application Suite 8.10 前提ソフトウェア
 Supported software versions
 
 https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=suite-supported-software-versions
@@ -92,7 +92,7 @@ https://www.ibm.com/docs/en/maximo-manage/continuous-delivery?topic=deploy-syste
 | ------------------------- | ---------------------------------- |
 | 01_事前準備               | 1時間                              |
 | 02_AWS準備                | 30分                               |
-| 03_MAS/MANAGEインストール | アクティベート完了まで6時間程度     |
+| 03_MAS/MANAGEインストール | AWS環境アクティベート完了まで1時間30分程度<br>MAS/MANAGEインストール完了まで4時間程度 |
 | 04_管理者ユーザーの作成   | 30分                               |
 | 05_導入後環境の確認       | 15分                               |
 

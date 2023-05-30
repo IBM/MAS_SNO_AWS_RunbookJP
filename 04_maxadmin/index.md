@@ -32,10 +32,10 @@ MAS install中に作成されたsuperuserを使って、manage管理者ユーザ
 また、複数のドメイン(admin.~ ,api.~)に対して許可を行う必要があります。
 
 
-1. Administration Dashboard URLの"admin"を"api"に変更してアクセスします。
+1. ドメインが"api"から始まるAdministration Dashboard URLにアクセスします。
     
-    Administration Dashboard URLは、OCP Webコンソールのネットワーク→ルートへ移動し、  
-    左上のプルダウンのプロジェクト名を「mas-inst1-core」に設定後、「inst1-admin」の場所(Location)にあります。  
+    ドメインが"api"から始まるAdministration Dashboard URLは、OCP Webコンソールのネットワーク→ルートへ移動し、  
+    左上のプルダウンのプロジェクト名を「mas-inst1-core」に設定後、「inst1-api」の場所(Location)にあります。   
     (この下の「3. MAS Core 管理コンソールへアクセス」の1/2の手順に説明があるので参考にしてください)
 
 
@@ -48,7 +48,12 @@ MAS install中に作成されたsuperuserを使って、manage管理者ユーザ
 
     ![](2-2-1.png)
 
-1. Administration Dashboard URLへアクセス。この際も、自己署名証明書によるエラーが表示されるため、各ブラウザの手順にて許可します。
+1. ドメインが"admin"から始まるAdministration Dashboard URLへアクセスします。この際も、自己署名証明書によるエラーが表示されるため、各ブラウザの手順にて許可します。
+    
+    ドメインが"admin"から始まるAdministration Dashboard URLは、OCP Webコンソールのネットワーク→ルートへ移動し、  
+    左上のプルダウンのプロジェクト名を「mas-inst1-core」に設定後、「inst1-admin」の場所(Location)にあります。  
+    (この下の「3. MAS Core 管理コンソールへアクセス」の1/2の手順に説明があるので参考にしてください)
+
     ![](2-3-1.png)
 
 2. superUserの「Username」「Password」を用いてログインします。
@@ -104,7 +109,7 @@ MAS install中に作成されたsuperuserを使って、manage管理者ユーザ
    
    一度superuserをログアウトして、設定したパスワードを使用してmaxadminでログインすることができれば設定は完了です。  
   
-7. (オプション)必要に応じてMANAGEのアプリケーションに入り、デモデータなどを確認します。 
+7. (オプション)必要に応じてMANAGEのアプリケーションに入り、デモデータなどを確認します。   
 
     ![](4-7-2.png)
     ![](4-7-1.png)

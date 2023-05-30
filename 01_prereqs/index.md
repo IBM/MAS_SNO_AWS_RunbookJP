@@ -87,14 +87,7 @@ WSLの導入手順については[こちら](https://docs.microsoft.com/ja-jp/wi
 
     「license.dat」 という名前のファイルがダウンロードされます。
 
-9. 「entitlement.lic」 というファイル名に変更してcliインストール実行環境にコピーします。
 
-    ```bash
-    > pwd
-    /work
-    > ls
-    entitlement.lic
-    ```
 
 
 ### 4.IBM Entitlement Keyの取得
